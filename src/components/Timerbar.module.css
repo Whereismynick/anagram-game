@@ -1,0 +1,54 @@
+.timerBar {
+  width: 300px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.25);
+}
+
+.timerBarInner {
+  height: 100%;
+  width: 100%;
+
+  border-radius: 10px;
+  transition: width 1s linear, background-color 0.3s linear, box-shadow 0.3s ease;
+  font-family: "Press Start 2P", cursive;
+
+}
+
+.timerBarInner.warning {
+  background: linear-gradient(90deg, #ffcc00, #ff6600);
+  box-shadow: 0 0 10px rgba(255, 165, 0, 0.8);
+}
+
+.timerBarInner.danger {
+  background: linear-gradient(90deg, #ff3333, #cc0000);
+  box-shadow: 0 0 12px rgba(255, 51, 51, 0.8);
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .timerBar {
+    width: 315px;
+    height: 12px;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 400px) {
+  .timerBar {
+    width: 180px;
+    height: 10px;
+  }
+
+  .timerBarInner {
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 399px) {
+  .timerBar {
+    width: 150px;
+    height: 8px;
+  }
+}

@@ -1,0 +1,40 @@
+.word {
+  font-size: 36px;
+  font-weight: bold;
+  font-family: 'Press Start 2P', cursive;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  word-break: break-word;
+  color: #111;
+  line-height: 1.5;
+  padding: 0 10px;
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(-25px);
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .word {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 400px) {
+  .word {
+    font-size: 20px;
+    line-height: 1.5;
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 399px) {
+  .word {
+    font-size: 16px;
+    line-height: 1.4;
+    padding: 0 4px;
+  }
+}

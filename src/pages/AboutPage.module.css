@@ -1,0 +1,64 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px 25px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+.title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 28px;
+  font-weight: 700;
+  color: #4facfe;
+  margin-bottom: 20px;
+}
+
+.text {
+  text-align: start;
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 1199px) and (min-width: 768px) {
+  .container {
+    padding: 25px 20px;
+  }
+  .title {
+    font-size: 22px;
+  }
+  .text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 767px) and (min-width: 400px) {
+  .container {
+    max-width: 400px;
+    padding: 20px 15px;
+  }
+  .title {
+    font-size: 18px;
+  }
+  .text {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 399px) {
+  .container {
+    max-width: 90%;
+    padding: 15px 10px;
+  }
+  .title {
+    font-size: 16px;
+  }
+  .text {
+    font-size: 12px;
+  }
+}
