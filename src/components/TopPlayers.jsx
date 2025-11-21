@@ -30,7 +30,7 @@ const TopPlayers = () => {
   const [selectedPlayerIndex, setSelectedPlayerIndex] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/results/top")
+    fetch("https://anagram-game-dcyu.onrender.com/api/results/top")
       .then((res) => res.json())
       .then((data) => setTopList(data))
       .catch((err) => console.error("Ошибка загрузки топа:", err));
