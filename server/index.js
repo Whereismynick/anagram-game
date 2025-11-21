@@ -1,5 +1,6 @@
 import express from "express";
-import cors from "cors";
+import cors from "cors"
+import "./db.js"
 
 import authRoutes from "./routes/auth.js";
 import resultsRoutes from "./routes/results.js";
