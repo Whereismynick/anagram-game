@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
 });
 
 // Роуты
-app.use("/", authRoutes);
+app.use("/api", authRoutes);
 app.use("/api", resultsRoutes);
 
 app.listen(PORT, () => {
