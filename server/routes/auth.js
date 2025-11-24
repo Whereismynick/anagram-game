@@ -1,5 +1,5 @@
 import express from "express";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import { JWT_SECRET } from "../config.js";
@@ -45,24 +45,31 @@ router.post("/register", async (req, res) => {
   const { username, password } = value;
 
   try {
-    const existingUser = await User.findOne({ username });
-    if (existingUser)
-      return res.status(400).json({ message: "Пользователь уже существует" });
+  console.log("REGISTER BODY:", req.body);
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = new User({ username, password: hashedPassword });
-    await newUser.save();
-
-    const token = jwt.sign(
-      { id: newUser._id, username: newUser.username },
-      JWT_SECRET,
-      { expiresIn: "1h" }
-    );
-
-    res.status(201).json({ username: newUser.username, token });
-  } catch (err) {
-    res.status(500).json({ message: "Ошибка сервера", error: err.message });
+  const existingUser = await User.findOne({ username });
+  if (existingUser) {
+    console.log("Пользователь уже есть");
+    return res.status(400).json({ message: "Пользователь уже существует" });
   }
+
+  const newUser = new User({ username, password });
+  console.log("Перед save:", newUser);
+
+  await newUser.save();
+  console.log("После save:", newUser);
+
+  const token = jwt.sign(
+    { id: newUser._id, username: newUser.username },
+    JWT_SECRET,
+    { expiresIn: "1h" }
+  );
+
+  res.status(201).json({ username: newUser.username, token });
+} catch (err) {
+  console.error("REGISTER ERROR:", err);
+  res.status(500).json({ message: "Ошибка сервера", error: err.message });
+}
 });
 
 // Логин с валидацией

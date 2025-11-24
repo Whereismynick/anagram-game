@@ -30,7 +30,8 @@ const TopPlayers = () => {
   const [selectedPlayerIndex, setSelectedPlayerIndex] = useState(null);
 
   useEffect(() => {
-    fetch("https://anagram-game-dcyu.onrender.com/api/results/top")
+    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+    fetch(`${API_URL}/api/results/top`)
       .then((res) => res.json())
       .then((data) => setTopList(data))
       .catch((err) => console.error("Ошибка загрузки топа:", err));
@@ -48,12 +49,12 @@ const TopPlayers = () => {
           <li
             key={player.username}
             className={`${styles.item} ${index === 0
-                ? styles.gold
-                : index === 1
-                  ? styles.silver
-                  : index === 2
-                    ? styles.bronze
-                    : ""
+              ? styles.gold
+              : index === 1
+                ? styles.silver
+                : index === 2
+                  ? styles.bronze
+                  : ""
               }`}
             onClick={() => toggleHistory(index)}
           >

@@ -82,20 +82,21 @@ const GamePage = () => {
   }, [isGameActive]);
 
   const saveResultToServer = async () => {
-    if (!token) return;
-    try {
-      await fetch("http://localhost:5000/api/results", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify({ score: scoreRef.current })
-      });
-    } catch (err) {
-      console.error("Ошибка при сохранении результата:", err);
-    }
-  };
+  if (!token) return;
+  try {
+    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+    await fetch(`${API_URL}/api/results`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({ score: scoreRef.current })
+    });
+  } catch (err) {
+    console.error("Ошибка при сохранении результата:", err);
+  }
+};
 
   const startGame = () => {
     setScore(0);

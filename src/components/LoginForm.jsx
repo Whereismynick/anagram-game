@@ -13,7 +13,9 @@ const LoginForm = () => {
   const handleSubmit = async () => {
     try {
       const endpoint = isRegister ? "register" : "login";
-      const res = await fetch(`https://anagram-game-dcyu.onrender.com/${endpoint}`, {
+      const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
+      const res = await fetch(`${API_URL}/${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
@@ -49,16 +51,16 @@ const LoginForm = () => {
           {isRegister ? "Зарегистрироваться" : "Войти"}
         </button>
         <button
-  className={styles.button}
-  onClick={() => {
-    setIsRegister(!isRegister);
-    setUsername("");
-    setPassword("");
-    setError("");  
-  }}
->
-  {isRegister ? "Уже есть аккаунт?" : "Создать аккаунт"}
-</button>
+          className={styles.button}
+          onClick={() => {
+            setIsRegister(!isRegister);
+            setUsername("");
+            setPassword("");
+            setError("");
+          }}
+        >
+          {isRegister ? "Уже есть аккаунт?" : "Создать аккаунт"}
+        </button>
         {error && <p style={{ color: "red" }}>{error}</p>}
       </div>
     </div>
