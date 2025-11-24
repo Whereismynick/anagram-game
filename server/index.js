@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 const allowedOrigins = [
   "https://anagram-game-jet.vercel.app",
+  "https://www.anagramgame.ru",
   "https://anagramgame.ru"
 ];
 
