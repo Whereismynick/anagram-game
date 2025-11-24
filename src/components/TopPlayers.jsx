@@ -29,13 +29,15 @@ const TopPlayers = () => {
   const [topList, setTopList] = useState([]);
   const [selectedPlayerIndex, setSelectedPlayerIndex] = useState(null);
 
-  useEffect(() => {
-    const API_URL = process.env.REACT_APP_API_URL;
-    fetch(`${API_URL}/api/results/top`)
-      .then((res) => res.json())
-      .then((data) => setTopList(data))
-      .catch((err) => console.error("Ошибка загрузки топа:", err));
-  }, []);
+  const API_URL = import.meta.env.VITE_API_URL;
+
+useEffect(() => {
+  fetch(`${API_URL}/api/results/top`)
+    .then((res) => res.json())
+    .then((data) => setTopList(data))
+    .catch((err) => console.error("Ошибка загрузки топа:", err));
+}, []);
+
 
   const toggleHistory = (index) => {
     setSelectedPlayerIndex(selectedPlayerIndex === index ? null : index);

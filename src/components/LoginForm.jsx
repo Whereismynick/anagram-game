@@ -13,13 +13,14 @@ const LoginForm = () => {
   const handleSubmit = async () => {
     try {
       const endpoint = isRegister ? "register" : "login";
-      const API_URL = process.env.REACT_APP_API_URL;
+      const API_URL = import.meta.env.VITE_API_URL; // ✅ исправлено для Vite
 
-      const res = await fetch(`${API_URL}/${endpoint}`, {
+      const res = await fetch(`${API_URL}/api/${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
+
       const data = await res.json();
 
       if (!res.ok) throw new Error(data.message);
