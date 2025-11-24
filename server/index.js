@@ -8,10 +8,10 @@ import resultsRoutes from "./routes/results.js";
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Разрешённые источники для CORS
+
 const allowedOrigins = [
-  "https://anagram-game-jet.vercel.app", 
-  "http://localhost:5173"           
+  "https://anagram-game-jet.vercel.app",
+  "https://anagramgame.ru"
 ];
 
 app.use(cors({
@@ -19,7 +19,7 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error("CORS: Доступ запрещён"));
+      callback(new Error(`CORS: Доступ запрещён для ${origin}`));
     }
   },
   credentials: true
@@ -27,7 +27,7 @@ app.use(cors({
 
 app.use(express.json());
 
-// Проверка работы сервера
+// Проверка сервера
 app.get("/", (req, res) => {
   res.send("✅ Server is running!");
 });
