@@ -7,6 +7,12 @@ import Joi from "joi";
 
 const router = express.Router();
 
+const loginSchema = Joi.object({
+  username: Joi.string().required(),
+  password: Joi.string().required()
+})
+
+
 // Joi-схема для регистрации
 const registerSchema = Joi.object({
   username: Joi.string()
@@ -74,7 +80,7 @@ router.post("/register", async (req, res) => {
 
 // Логин с валидацией
 router.post("/login", async (req, res) => {
-  const { error, value } = registerSchema.validate(req.body);
+  const { error, value } = loginSchema.validate(req.body);
   if (error) return res.status(400).json({ message: error.details[0].message });
 
   const { username, password } = value;
