@@ -30,7 +30,7 @@ const TopPlayers = () => {
   const [selectedPlayerIndex, setSelectedPlayerIndex] = useState(null);
 
   useEffect(() => {
-    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+    const API_URL = process.env.REACT_APP_API_URL;
     fetch(`${API_URL}/api/results/top`)
       .then((res) => res.json())
       .then((data) => setTopList(data))
