@@ -10,7 +10,17 @@
   box-sizing: border-box;
 }
 
+.gameHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 40px;
+  padding: 15px 22px;
+  box-sizing: border-box;
 
+}
 
 .timeSection {
   display: flex;
