@@ -94,7 +94,7 @@
   justify-content: space-between;
   padding: 80px 25px 30px;
   box-sizing: border-box;
-  z-index: 1050;
+  z-index: 2000;
   overflow-y: auto;
   overscroll-behavior: contain;
   visibility: hidden;
@@ -106,7 +106,8 @@
 }
 
 body.menu-open {
-  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 .mobileMenu ul {
