@@ -98,6 +98,7 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   visibility: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobileMenu.open {
