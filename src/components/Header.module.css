@@ -71,6 +71,10 @@
   background: #5566cc;
 }
 
+:root {
+  --menu-level: 999999;
+}
+
 .burger {
   display: none;
   font-size: 28px;
@@ -81,6 +85,7 @@
 
 .mobileMenu {
   position: fixed;
+  isolation: isolate;
   top: 0;
   right: 0;
   width: 260px;
@@ -94,7 +99,7 @@
   justify-content: space-between;
   padding: 80px 25px 30px;
   box-sizing: border-box;
-  z-index: 1050;
+  z-index: var(--menu-level);
   overflow-y: auto;
   overscroll-behavior: contain;
   visibility: hidden;
