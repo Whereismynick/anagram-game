@@ -13,7 +13,7 @@ const LoginForm = () => {
   const handleSubmit = async () => {
     try {
       const endpoint = isRegister ? "register" : "login";
-      const API_URL = import.meta.env.VITE_API_URL; // ✅ исправлено для Vite
+      const API_URL = import.meta.env.VITE_API_URL;
 
       const res = await fetch(`${API_URL}/api/${endpoint}`, {
         method: "POST",
